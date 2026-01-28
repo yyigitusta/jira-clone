@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  taskflow-db:
+    image: postgres:16-alpine
+    container_name: taskflow_postgres_v2
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=TaskFlowDb
+    ports:
+      - "5435:5432"
+    volumes:
+      - taskflow_data_v2:/var/lib/postgresql/data
+
+volumes:
+  taskflow_data_v2:
