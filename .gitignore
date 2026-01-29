@@ -1,0 +1,15 @@
+# --- Frontend Gereksizleri ---
+node_modules/
+dist/
+.env
+
+# --- Backend (.NET) Gereksizleri ---
+bin/
+obj/
+.vs/
+*.user
+appsettings.Development.json
+
+# --- İşletim Sistemi ---
+.DS_Store
+Thumbs.db

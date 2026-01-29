@@ -16,6 +16,16 @@ builder.Services.AddControllers()
     {
         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     });
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin()   // Kim gelirse gelsin (React, Postman, Mobil...)
+                   .AllowAnyMethod()   // GET, POST, PUT, DELETE hepsi serbest
+                   .AllowAnyHeader();  // Her türlü baþlýk kabul
+        });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,6 +36,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 
